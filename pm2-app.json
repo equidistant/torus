@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "torus",
+            "script": "npm",
+            "args" : "run run-production"
+        }
+    ]
+}
