@@ -53,6 +53,12 @@ const Logo = styled.button.attrs(props => ({
   margin-left: ${theme.spacing(1)};
   background-size: cover;
   background-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 const Menu = styled.button`
@@ -79,6 +85,7 @@ const Menu = styled.button`
   &:active {
     transform: translateY(2px);
   }
+  background-color: transparent;
 `
 
 const Link = styled.button`
