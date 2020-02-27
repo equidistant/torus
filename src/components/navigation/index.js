@@ -61,7 +61,7 @@ const Logo = styled.button.attrs(props => ({
   user-select: none;
 `
 
-const Menu = styled.div`
+const Menu = styled.button`
   height: 30px;
   width: 30px;
   border: none;
@@ -92,6 +92,8 @@ const Menu = styled.div`
   -ms-user-select: none;
   user-select: none;
   overflow: hidden;
+      vertical-align: bottom;
+        background-color: transparent;
 `
 
 const Link = styled.button`
