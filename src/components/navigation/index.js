@@ -50,6 +50,7 @@ const Logo = styled.button.attrs(props => ({
     height: 48px;
     background-image: url(${LogoImg.zero.white});
   }
+  margin-left: ${theme.spacing(1)};
   background-size: cover;
   background-color: transparent;
   -webkit-touch-callout: none;
@@ -61,8 +62,8 @@ const Logo = styled.button.attrs(props => ({
 `
 
 const Menu = styled.div`
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   border: none;
   cursor: pointer;
   display: flex;
