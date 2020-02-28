@@ -152,11 +152,11 @@ const Dropdown = styled.div`
   transition: all 0.3s ease-in-out;
   ${props => props.show && css`
     height: 144px;
-
   `}
   overflow: hidden;
   background-color: ${theme.color.black};
   position: absolute;
+  z-index: 3;
 `
 
 
