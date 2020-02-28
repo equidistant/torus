@@ -9,25 +9,18 @@ const Component = () => {
     <Root>
       <FirstScreen>
         <FirstScreenRoot>
-          <Image />
-          <H3>Cryptocurrency for a future economy</H3>
-          <ButtonGroup>
-            <Button>Wallet</Button>
-            <Button>Miner</Button>
-            <Button>Binaries</Button>
-          </ButtonGroup>
+          <Column>
+            <H2>Wallets</H2>
+
+          </Column>
+          <Column>
+            <H2>Miners</H2>
+          </Column>
+          <Column>
+            <H2>Binaries</H2>
+          </Column>
         </FirstScreenRoot>
       </FirstScreen>
-      <SecondScreen>
-        <Text first={true}>
-          <strong>The Torus blockchain </strong> is an experimental open-source, hybrid Proof-of-Work (PoW) and Proof-of-Stake (PoS) blockchain fueled by the native Torus (TRS) cryptocurrency.
-        </Text>
-        <Text>
-          For the <strong> first 2 years</strong>, Torus will have a <strong>hybrid PoS/PoW </strong> emission.
-          Mining (PoW) will last for approximately 2 years, until block height number, after which only <strong>PoS-based </strong> emission remains.
-        </Text>
-        <Text last={true}>Once there is no more emissions from mining, a <strong>5% annual staking reward </strong> per year will continue <strong>indefinitely</strong>.</Text>
-      </SecondScreen>
     </Root>
   )
 }
@@ -46,8 +39,7 @@ const FirstScreen = styled.div`
   height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
 `
 
 const FirstScreenRoot = styled.div`
@@ -61,7 +53,13 @@ const FirstScreenRoot = styled.div`
   font-family: 'Montserrat';
   margin-bottom: 32px;
   padding: ${theme.spacing(1)};
-  max-width: 550px;
+`
+
+const Column = styled.div`
+  width: 100%;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
 `
 
 const SecondScreen = styled.div`
@@ -127,61 +125,10 @@ const Text = styled.p`
   max-width: 600px;
 `
 
-const Image = styled.div`
-  width: 162px;
-  height: 75px;
-  @media only screen and (min-width: ${theme.breakpoint.small}) {
-    width: 216px;
-    height: 100px;
-  }
-  background-image: url(${LogoImg.torus.big.black});
-  background-size: cover;
-  background-color: transparent;
-`
-
-const bounce = keyframes`
-  0% {
-    transform: rotate(-45deg) translate(0, 0);
-  }
-  20% {
-    transform: rotate(-45deg) translate(-15px, 15px);
-  }
-  40% {
-    transform: rotate(-45deg) translate(0, 0);
-  }
-`
-
-const ScrollDown = styled.span`
-  position: absolute;
-  bottom: 30px;
-  left: calc(50% - 15px);
-  width: calc(30px);
-  height: calc(30px);
-  border-left: 2px solid ${theme.color.orange};
-  border-bottom: 2px solid ${theme.color.orange};
-  transform: rotate(-45deg);
-  animation: ${bounce} 2s infinite;
-  box-sizing: border-box;
-  opacity: 1;
-  z-index: 2;
-`
-
-const ButtonGroup = styled.div`
-  margin-top: ${theme.spacing(1)};
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: column;
-  @media only screen and (min-width: ${theme.breakpoint.small}) {
-    flex-direction: row;
-  }
-`
-
 const Button = styled.button`
   outline: none;
   font-size: 16px;
-  width: 150px;
+  width: 100px;
   height: 35px;
   border: none;
   cursor: pointer;
@@ -191,7 +138,6 @@ const Button = styled.button`
   border: 1px solid ${theme.color.black};
   background-color: transparent;
   box-shadow: ${theme.shadow.dp4};
-  margin: ${theme.spacing(1)};
   &:hover {
     border: 1px solid ${theme.color.orange};
     color: ${theme.color.orange};
@@ -201,6 +147,9 @@ const Button = styled.button`
     border: 1px solid ${theme.color.black};
     color: ${theme.color.black};
     transform: translateY(1px);
+  }
+  @media only screen and (min-width: ${theme.breakpoint.small}) {
+    width: 150px;
   }
 `
 
