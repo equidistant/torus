@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import Navigation from '../navigation'
 import { LogoImg } from '../../images'
 import theme from '../../theme'
@@ -8,9 +8,10 @@ const Component = () => {
   return (
     <Root>
       <FirstScreen>
-        <H1>Torus Coin</H1>
-        <Image />
-        <H3>Cryptocurrency for a future economy</H3>
+        <FirstScreenRoot>
+          <Image />
+          <H3>Cryptocurrency for a future economy</H3>
+        </FirstScreenRoot>
         <ScrollDown />
       </FirstScreen>
       <SecondScreen>
@@ -24,7 +25,7 @@ const Component = () => {
           Mining (PoW) will last for approximately 2 years, until block height number, after which only PoS-based emission remains.
         </Text>
         <Text>In other words, after 2 years, all 100m TRS coins allocated for mining will be distributed and in circulation.</Text>
-        <Text>Once there is no more emissions from mining, a 5% annual staking reward per year will continue indefinitely.</Text>
+        <Text last={true}>Once there is no more emissions from mining, a 5% annual staking reward per year will continue indefinitely.</Text>
       </SecondScreen>
     </Root>
   )
@@ -32,7 +33,7 @@ const Component = () => {
 
 const Root = styled.div`
   width: 100%;
-  height: min-content;
+  height: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,13 +47,23 @@ const FirstScreen = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`
+
+const FirstScreenRoot = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  height: min-content;
+  justify-content: center;
+  align-items: center;
   position: relative;
   font-family: 'Montserrat';
+  margin-bottom: 32px;
 `
 
 const SecondScreen = styled.div`
   width: 100%;
-  height: 100vh;
+  height: max-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,6 +113,10 @@ const Text = styled.p`
   padding: ${theme.spacing(1)};
   margin-top: ${theme.spacing(3)};
   text-align: justify;
+  ${props => props.last && css`
+    margin-bottom: ${theme.spacing(3)};
+  `}
+  max-width: 800px;
 `
 
 const Image = styled.div`
