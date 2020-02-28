@@ -8,21 +8,21 @@ const Component = ({ toggled, setToggled, subRoute, setSubRoute }) => {
   return (
     <>
       <Root toggled={toggled}>
-        <Row><Link onClick={() => redirect({ history, setToggled, url: '/home'})}>Home</Link></Row>
+        <Row><Link onClick={() => redirect({ history, setToggled, url: '/home', setSubRoute})}>Home</Link></Row>
         <Row><Link onClick={() => subRoute === 'downloads' ? setSubRoute('/') : setSubRoute('downloads')}>Downloads</Link></Row>
         <ExpandableRow show={subRoute === 'downloads'}>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads'})}>Wallets</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads'})}>Miners</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads'})}>Binaries</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads'})}>Download4</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Wallets</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Miners</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Binaries</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Download4</ExpandableLink></Row>
         </ExpandableRow>
-        <Row><Link onClick={() => redirect({ history, setToggled, url: '/community'})}>Community</Link></Row>
+        <Row><Link onClick={() => redirect({ history, setToggled, url: '/community', setSubRoute})}>Community</Link></Row>
         <Row><Link onClick={() => subRoute === 'resources' ? setSubRoute('/') : setSubRoute('resources')}>Resources</Link></Row>
-        <ExpandableRow show={subRoute === 'resource'}>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources'})}>Resources1</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources'})}>Resources2</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources'})}>Resources3</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources'})}>Resources4</ExpandableLink></Row>
+        <ExpandableRow show={subRoute === 'resources'}>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources1</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources2</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources3</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources4</ExpandableLink></Row>
         </ExpandableRow>
       </Root>
       <Overlay toggled={toggled} onClick={e => toggledOff({ setToggled, setSubRoute})} />
@@ -63,6 +63,9 @@ const Overlay = styled.div`
 `
 
 const Row = styled.div`
+  display: flex;
+  align-items: center;
+
   cursor: pointer;
   outline: none;
   height: 48px;
@@ -71,6 +74,7 @@ const Row = styled.div`
     transform: translateY(2px);
   }
   background-color: ${theme.color.black};
+  padding: ${theme.spacing(1.5)};
 `
 
 const ExpandableRow = styled.div`
@@ -86,8 +90,7 @@ const ExpandableRow = styled.div`
   transition: all 0.3s ease-in-out;
   ${props => props.show && css`
     height: 192px;
-    border-top: 1px solid #FFFFFF32;
-    border-bottom: 1px solid #FFFFFF32;
+
   `}
   overflow: hidden;
   background-color: ${theme.color.black};
@@ -95,7 +98,6 @@ const ExpandableRow = styled.div`
 
 const Link = styled.p`
   transition: color 0.3s ease-in-out;
-
   &:hover {
     color: ${theme.color.orange};
     cursor: pointer;
@@ -103,18 +105,20 @@ const Link = styled.p`
   color: white;
   font-size: 16px;
   font-family: 'Robot', 'Helvetica Neue';
-  padding: ${theme.spacing(1)};
-  text-align: center;
-
+  height: min-content;
 `
 
 const ExpandableLink = styled(Link)`
   font-size: 14px;
+  padding: ${theme.spacing(1.5)};
 `
 
-const redirect = ({ setToggled, history, url }) => {
+const redirect =  async({ setToggled, history, url, setSubRoute }) => {
   setToggled(false)
+  await sleep(200)
+  setSubRoute('/')
   history.push(url)
+
 }
 
 const toggledOff = async ({ setToggled, setSubRoute }) => {
