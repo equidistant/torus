@@ -176,6 +176,7 @@ const ButtonGroup = styled.div`
 `
 
 const Button = styled.button`
+  outline: none;
   font-size: 16px;
   width: 100px;
   height: 35px;
