@@ -1,7 +1,8 @@
 export default {
   color: {
     black: '#000000',
-    orange: '#EE3C0A'
+    orange: '#EE3C0A',
+    grey: '#151518'
   },
   spacing: (value) => `${value * 8}px`,
   shadow: {

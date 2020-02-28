@@ -8,7 +8,7 @@ const Component = ({ toggled, setToggled, subRoute, setSubRoute }) => {
   return (
     <>
       <Root toggled={toggled}>
-        <Row><Link onClick={() => redirect({ history, setToggled, url: '/home', setSubRoute})}>Home</Link></Row>
+        <Row><Link onClick={() => redirect({ history, setToggled, url: '/', setSubRoute})}>Home</Link></Row>
         <Row><Link onClick={() => subRoute === 'downloads' ? setSubRoute('/') : setSubRoute('downloads')}>Downloads</Link></Row>
         <ExpandableRow show={subRoute === 'downloads'}>
           <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Wallets</ExpandableLink></Row>

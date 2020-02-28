@@ -19,7 +19,8 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     line-height: 1.2;
     letter-spacing: .2rem;
-
+    overflow-y: ${props => props.toggled ? 'hidden': 'scroll'};
+    overflow-x: hidden;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -webkit-tap-highlight-color: transparent;
