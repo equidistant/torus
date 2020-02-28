@@ -11,16 +11,35 @@ const Component = () => {
         <FirstScreenRoot>
           <Column>
             <H2>Wallets</H2>
-
-          </Column>
-          <Column>
-            <H2>Miners</H2>
-          </Column>
-          <Column>
-            <H2>Binaries</H2>
+            <Text>
+              Send, receive, and store Torus. The desktop wallet also enables minting blocks and securing of the network.
+            </Text>
+            <Divider />
           </Column>
         </FirstScreenRoot>
       </FirstScreen>
+      <SecondScreen>
+        <FirstScreenRoot>
+          <Column>
+            <H2>Mining</H2>
+            <Text>To mine Torus, you need mining software.
+              Below is an unofficial list of mining software that has been found to have a decent reputation.
+            </Text>
+            <Divider />
+          </Column>
+        </FirstScreenRoot>
+      </SecondScreen>
+      <ThirdScreen>
+        <FirstScreenRoot>
+          <Column>
+            <H2>Binaries</H2>
+            <Text>To mine Torus, you need mining software.
+              Below is an unofficial list of mining software that has been found to have a decent reputation.
+            </Text>
+            <Divider />
+          </Column>
+        </FirstScreenRoot>
+      </ThirdScreen>
     </Root>
   )
 }
@@ -39,7 +58,23 @@ const FirstScreen = styled.div`
   height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+`
 
+const Divider = styled.div`
+  padding: ${theme.spacing(1)};
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  width: 60%;
+  align-self: center;
+`
+
+const SecondScreen = styled(FirstScreen)`
+  height: 100vh;
+
+`
+
+const ThirdScreen = styled(FirstScreen)`
+  background-color: white;
 `
 
 const FirstScreenRoot = styled.div`
@@ -62,18 +97,6 @@ const Column = styled.div`
   flex-direction: column;
 `
 
-const SecondScreen = styled.div`
-  width: 100%;
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: ${theme.color.orange}AF;
-  color: ${theme.color.black};
-  font-family: 'Montserrat';
-`
-
 const H1 = styled.p`
   padding: ${theme.spacing(1)};
   font-size: 36px;
@@ -88,13 +111,9 @@ const H1 = styled.p`
 
 const H2 = styled.p`
   padding: ${theme.spacing(1)};
-  font-size: 24px;
-  letter-spacing: 2px;
-  @media only screen and (min-width: ${theme.breakpoint.small}) {
-    font-size: 36px;
-    letter-spacing: 4px;
-  }
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 400;
+  color: ${theme.color.orange};
 `
 
 const H3 = styled.p`
@@ -112,7 +131,7 @@ const Text = styled.p`
 
   font-size: 16px;
   letter-spacing: 0px;
-  width: 70%;
+  width: 100%;
   padding: ${theme.spacing(1)};
   margin-top: ${theme.spacing(1)};
   text-align: justify;
@@ -122,7 +141,6 @@ const Text = styled.p`
   ${props => props.first && css`
     margin-top: ${theme.spacing(2)};
   `}
-  max-width: 600px;
 `
 
 const Button = styled.button`
