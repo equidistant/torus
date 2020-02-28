@@ -198,8 +198,8 @@ const Button = styled.button`
   }
   &:active {
     box-shadow: ${theme.shadow.dp0};
-    border: 1px solid ${theme.color.black};
-    color: ${theme.color.black};
+    border: 1px solid ${theme.color.orange};
+    color: ${theme.color.orange};
     transform: translateY(1px);
   }
 `
