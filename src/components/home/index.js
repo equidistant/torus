@@ -90,7 +90,7 @@ const bounce = keyframes`
     transform: rotate(-45deg) translate(0, 0);
   }
   20% {
-    transform: rotate(-45deg) translate(-1vw, 1vw);
+    transform: rotate(-45deg) translate(-15px, 15px);
   }
   40% {
     transform: rotate(-45deg) translate(0, 0);
@@ -99,10 +99,10 @@ const bounce = keyframes`
 
 const ScrollDown = styled.span`
   position: absolute;
-  bottom: calc(2vw + 5px);
-  left: calc(50% - 12.5px - 0.5vw);
-  width: calc(25px + 1vw);
-  height: calc(25px + 1vw);
+  bottom: 30px;
+  left: calc(50% - 15px);
+  width: calc(30px);
+  height: calc(30px);
   border-left: 2px solid ${theme.color.orange};
   border-bottom: 2px solid ${theme.color.orange};
   transform: rotate(-45deg);
