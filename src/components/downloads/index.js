@@ -14,10 +14,10 @@ const Component = () => {
             <Text>
               Send, receive, and store Torus. The desktop wallet also enables minting blocks and securing of the network.
             </Text>
-            <Divider />
           </Column>
         </FirstScreenRoot>
       </FirstScreen>
+      <Divider />
       <SecondScreen>
         <FirstScreenRoot>
           <Column>
@@ -25,10 +25,10 @@ const Component = () => {
             <Text>To mine Torus, you need mining software.
               Below is an unofficial list of mining software that has been found to have a decent reputation.
             </Text>
-            <Divider />
           </Column>
         </FirstScreenRoot>
       </SecondScreen>
+      <Divider />
       <ThirdScreen>
         <FirstScreenRoot>
           <Column>
@@ -36,7 +36,6 @@ const Component = () => {
             <Text>To mine Torus, you need mining software.
               Below is an unofficial list of mining software that has been found to have a decent reputation.
             </Text>
-            <Divider />
           </Column>
         </FirstScreenRoot>
       </ThirdScreen>
@@ -55,10 +54,9 @@ const Root = styled.div`
 
 const FirstScreen = styled.div`
   width: 100%;
-  height: calc(100vh - 64px);
+  height: min-content;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
 `
 
 const Divider = styled.div`
@@ -69,7 +67,6 @@ const Divider = styled.div`
 `
 
 const SecondScreen = styled(FirstScreen)`
-  height: 100vh;
 
 `
 
@@ -86,7 +83,6 @@ const FirstScreenRoot = styled.div`
   align-items: center;
   position: relative;
   font-family: 'Montserrat';
-  margin-bottom: 32px;
   padding: ${theme.spacing(1)};
 `
 
@@ -110,6 +106,7 @@ const H1 = styled.p`
 `
 
 const H2 = styled.p`
+  margin-top: ${theme.spacing(1)};
   padding: ${theme.spacing(1)};
   font-size: 32px;
   font-weight: 400;
