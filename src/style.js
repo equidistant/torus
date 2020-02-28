@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Serif+Pro|Bubbler+One');
+  @import url('https://fonts.googleapis.com/css?family=Montserrat');
   html > body > #root {
     height: min-content;
   }

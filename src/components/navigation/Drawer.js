@@ -102,7 +102,6 @@ const Link = styled.p`
   }
   color: white;
   font-size: 16px;
-  font-family: 'Robot', 'Helvetica Neue';
   height: min-content;
 `
 

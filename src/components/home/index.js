@@ -47,6 +47,7 @@ const FirstScreen = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  font-family: 'Montserrat';
 `
 
 const SecondScreen = styled.div`
@@ -56,11 +57,13 @@ const SecondScreen = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${theme.color.orange};
-  color: white;
+  background-color: ${theme.color.orange}AF;
+  color: ${theme.color.black};
+  font-family: 'Montserrat';
 `
 
 const H1 = styled.p`
+  padding: ${theme.spacing(1)};
   font-size: 36px;
   letter-spacing: 3px;
   @media only screen and (min-width: ${theme.breakpoint.small}) {
@@ -70,6 +73,7 @@ const H1 = styled.p`
 `
 
 const H2 = styled.p`
+  padding: ${theme.spacing(1)};
   font-size: 24px;
   letter-spacing: 2px;
   @media only screen and (min-width: ${theme.breakpoint.small}) {
@@ -81,12 +85,14 @@ const H2 = styled.p`
 `
 
 const H3 = styled.p`
+  padding: ${theme.spacing(1)};
   font-size: 18px;
   letter-spacing: 0px;
   @media only screen and (min-width: ${theme.breakpoint.small}) {
     font-size: 24px;
     letter-spacing: 1px;
   }
+  text-align: center;
 `
 
 const Text = styled.p`

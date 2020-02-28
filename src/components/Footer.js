@@ -36,7 +36,6 @@ const Text = styled.p`
   font-size: 12px;
   letter-spacing: 0.4px;
   font-weight: 400;
-  font-family: 'Roboto', 'Helvetica Neue';
 `
 
 

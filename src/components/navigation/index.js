@@ -132,7 +132,6 @@ const Link = styled.button`
   &:active {
     transform: translateY(2px);
   }
-  font-family: 'Robot', 'Helvetica Neue';
 `
 
 const DropdownRoot = styled.div`
