@@ -187,9 +187,9 @@ const Button = styled.button`
   transition: all 0.2s ease-in-out;
   border: 1px solid ${theme.color.black};
   background-color: transparent;
+  box-shadow: ${theme.shadow.dp4};
   &:hover {
     border: 1px solid ${theme.color.orange};
-    box-shadow: ${theme.shadow.dp4};
     color: ${theme.color.orange};
   }
   &:active {
