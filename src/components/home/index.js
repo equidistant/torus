@@ -11,21 +11,23 @@ const Component = () => {
         <FirstScreenRoot>
           <Image />
           <H3>Cryptocurrency for a future economy</H3>
+          <ButtonGroup>
+            <Button>Wallet</Button>
+            <Button>Miner</Button>
+            <Button>Binaries</Button>
+          </ButtonGroup>
         </FirstScreenRoot>
         <ScrollDown />
       </FirstScreen>
       <SecondScreen>
-        <H1>About</H1>
-        <Text>
-          The Torus blockchain is an experimental open-source, hybrid Proof-of-Work (PoW) and Proof-of-Stake (PoS) blockchain fueled by the native Torus (TRS) cryptocurrency.
+        <Text first={true}>
+          <strong>The Torus blockchain </strong> is an experimental open-source, hybrid Proof-of-Work (PoW) and Proof-of-Stake (PoS) blockchain fueled by the native Torus (TRS) cryptocurrency.
         </Text>
-        <Text>Being GPU-mineable and permissionless, a high level of decentralisation, fair distribution and censorship-resistance is ensured from the very beginning. </Text>
         <Text>
-          For the first 2 years, Torus will have a hybrid PoS/PoW emission.
-          Mining (PoW) will last for approximately 2 years, until block height number, after which only PoS-based emission remains.
+          For the <strong> first 2 years</strong>, Torus will have a <strong>hybrid PoS/PoW </strong> emission.
+          Mining (PoW) will last for approximately 2 years, until block height number, after which only <strong>PoS-based </strong> emission remains.
         </Text>
-        <Text>In other words, after 2 years, all 100m TRS coins allocated for mining will be distributed and in circulation.</Text>
-        <Text last={true}>Once there is no more emissions from mining, a 5% annual staking reward per year will continue indefinitely.</Text>
+        <Text last={true}>Once there is no more emissions from mining, a <strong>5% annual staking reward </strong> per year will continue <strong>indefinitely</strong>.</Text>
       </SecondScreen>
     </Root>
   )
@@ -92,7 +94,7 @@ const H2 = styled.p`
     font-size: 36px;
     letter-spacing: 4px;
   }
-  font-weight: 700;
+  font-weight: 500;
 `
 
 const H3 = styled.p`
@@ -107,16 +109,20 @@ const H3 = styled.p`
 `
 
 const Text = styled.p`
+
   font-size: 16px;
   letter-spacing: 0px;
   width: 70%;
   padding: ${theme.spacing(1)};
-  margin-top: ${theme.spacing(3)};
+  margin-top: ${theme.spacing(1)};
   text-align: justify;
   ${props => props.last && css`
-    margin-bottom: ${theme.spacing(3)};
+    margin-bottom: ${theme.spacing(2)};
   `}
-  max-width: 800px;
+  ${props => props.first && css`
+    margin-top: ${theme.spacing(2)};
+  `}
+  max-width: 600px;
 `
 
 const Image = styled.div`
@@ -156,6 +162,37 @@ const ScrollDown = styled.span`
   box-sizing: border-box;
   opacity: 1;
   z-index: 2;
+`
+
+const ButtonGroup = styled.div`
+  margin-top: ${theme.spacing(3)};
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Button = styled.button`
+  font-size: 16px;
+  width: 150px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid ${theme.color.black};
+  background-color: transparent;
+  &:hover {
+    border: 1px solid ${theme.color.orange};
+    box-shadow: ${theme.shadow.dp4};
+  }
+  &:active {
+    box-shadow: ${theme.shadow.dp0};
+    background-color: ${theme.color.orange};
+    border: 1px solid ${theme.color.black};
+    transform: translateY(1px);
+  }
 `
 
 export default Component
