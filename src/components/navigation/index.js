@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
+import Drawer from './Drawer'
 import { MenuImg, LogoImg } from '../../images'
 import theme from '../../theme'
 
-const Component = () => {
+const Component = ({ toggled, setToggled }) => {
+  const [subRoute, setSubRoute] = useState('/')
   return (
     <Root>
-      <Menu />
+      <Drawer toggled={toggled} setToggled={setToggled} subRoute={subRoute} setSubRoute={setSubRoute}/>
+      <Menu onClick={e => toggledOnOff({ toggled, setToggled, setSubRoute})}/>
       <Link>Home</Link>
       <Link>Downloads</Link>
       <Logo />
@@ -44,7 +47,7 @@ const Logo = styled.button.attrs(props => ({
   }
   width: 104px;
   height: 48px;
-  background-image: url(${LogoImg.torus.white});
+  background-image: url(${LogoImg.torus.small.white});
   @media only screen and (min-width: ${theme.breakpoint.small}) {
     width: 48px;
     height: 48px;
@@ -109,6 +112,20 @@ const Link = styled.button`
   }
   font-family: 'Robot', 'Helvetica Neue';
 `
+
+const toggledOnOff = async ({ toggled, setToggled, setSubRoute }) => {
+  if (toggled) {
+    setToggled(false)
+    await sleep(200)
+    setSubRoute('/')
+  } else {
+    setToggled(true)
+  }
+}
+
+const sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
 
 
 export default Component

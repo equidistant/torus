@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
 import styled, { createGlobalStyle } from 'styled-components'
 
-import { GlobalStyle } from './style'
-import Home from './components/home'
+import { App } from './components'
 
-const App = () => {
+const AppWrapper = () => {
   return (
     <BrowserRouter>
-      <>
-        <GlobalStyle />
-        <Route exact path='/' component={Home} />
-      </>
+      <App />
     </BrowserRouter>
   )
 }
@@ -20,4 +16,4 @@ const App = () => {
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<AppWrapper />, document.getElementById('root'))
