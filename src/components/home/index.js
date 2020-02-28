@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Navigation from '../navigation'
 import { LogoImg } from '../../images'
 import theme from '../../theme'
@@ -7,20 +7,46 @@ import theme from '../../theme'
 const Component = () => {
   return (
     <Root>
-      <H1>Torus Coin</H1>
-      <Image />
-      <H2>Cryptocurrency for a future economy</H2>
+      <FirstScreen>
+        <H1>Torus Coin</H1>
+        <Image />
+        <H2>Cryptocurrency for a future economy</H2>
+        <ScrollDown />
+      </FirstScreen>
+      <SecondScreen>
+
+      </SecondScreen>
     </Root>
   )
 }
 
 const Root = styled.div`
   width: 100%;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const FirstScreen = styled.div`
+  width: 100%;
   height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+`
+
+const SecondScreen = styled.div`
+  width: 100%;
+  height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: ${theme.color.orange};
 `
 
 const H1 = styled.p`
@@ -58,4 +84,32 @@ const Image = styled.div`
   -ms-user-select: none;
   user-select: none;
 `
+
+const bounce = keyframes`
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(-45deg) translate(-1vw, 1vw);
+  }
+  40% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+`
+
+const ScrollDown = styled.span`
+  position: absolute;
+  bottom: calc(2vw + 5px);
+  left: calc(50% - 12.5px - 0.5vw);
+  width: calc(25px + 1vw);
+  height: calc(25px + 1vw);
+  border-left: 2px solid ${theme.color.orange};
+  border-bottom: 2px solid ${theme.color.orange};
+  transform: rotate(-45deg);
+  animation: ${bounce} 2s infinite;
+  box-sizing: border-box;
+  opacity: 1;
+  z-index: 2;
+`
+
 export default Component

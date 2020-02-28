@@ -72,7 +72,10 @@ const Logo = styled.button.attrs(props => ({
     height: 48px;
     background-image: url(${LogoImg.zero.white});
   }
-  margin-left: ${theme.spacing(1)};
+  @media only screen and (max-width: ${theme.breakpoint.small}) {
+    margin-left: ${theme.spacing(1)};
+  }
+
   background-size: cover;
   background-color: transparent;
   -webkit-touch-callout: none;
