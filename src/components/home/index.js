@@ -17,7 +17,6 @@ const Component = () => {
             <Button>Binaries</Button>
           </ButtonGroup>
         </FirstScreenRoot>
-        <ScrollDown />
       </FirstScreen>
       <SecondScreen>
         <Text first={true}>
@@ -54,13 +53,14 @@ const FirstScreen = styled.div`
 const FirstScreenRoot = styled.div`
   display: flex;
   flex-direction: column;
-  width: max-content;
+  width: 100%;
   height: min-content;
   justify-content: center;
   align-items: center;
   position: relative;
   font-family: 'Montserrat';
   margin-bottom: 32px;
+  padding: ${theme.spacing(1)};
 `
 
 const SecondScreen = styled.div`
@@ -84,6 +84,7 @@ const H1 = styled.p`
     letter-spacing: 5px;
   }
   font-weight: 700;
+  width: max-content;
 `
 
 const H2 = styled.p`
@@ -166,7 +167,9 @@ const ScrollDown = styled.span`
 
 const ButtonGroup = styled.div`
   margin-top: ${theme.spacing(3)};
-  width: 100%;
+  min-width: 310px;
+  max-width: 500px;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -174,7 +177,7 @@ const ButtonGroup = styled.div`
 
 const Button = styled.button`
   font-size: 16px;
-  width: 150px;
+  width: 100px;
   height: 35px;
   border: none;
   cursor: pointer;
@@ -186,12 +189,16 @@ const Button = styled.button`
   &:hover {
     border: 1px solid ${theme.color.orange};
     box-shadow: ${theme.shadow.dp4};
+    color: ${theme.color.orange};
   }
   &:active {
     box-shadow: ${theme.shadow.dp0};
-    background-color: ${theme.color.orange};
     border: 1px solid ${theme.color.black};
+    color: ${theme.color.black};
     transform: translateY(1px);
+  }
+  @media only screen and (min-width: ${theme.breakpoint.small}) {
+    width: 150px;
   }
 `
 
