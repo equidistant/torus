@@ -10,15 +10,14 @@ const Component = ({ toggled, setToggled, subRoute, setSubRoute }) => {
       <Root toggled={toggled}>
         <Row><Link onClick={() => redirect({ history, setToggled, url: '/', setSubRoute})}>Home</Link></Row>
         <Row><Link onClick={() => subRoute === 'downloads' ? setSubRoute('/') : setSubRoute('downloads')}>Downloads</Link></Row>
-        <ExpandableRow show={subRoute === 'downloads'}>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Wallets</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Miners</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Binaries</ExpandableLink></Row>
-          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Download4</ExpandableLink></Row>
+        <ExpandableRow show={subRoute === 'downloads'} height={144}>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads#wallets', setSubRoute})}>Wallets</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads#miners', setSubRoute})}>Miners</ExpandableLink></Row>
+          <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/downloads#binaries', setSubRoute})}>Binaries</ExpandableLink></Row>
         </ExpandableRow>
         <Row><Link onClick={() => redirect({ history, setToggled, url: '/community', setSubRoute})}>Community</Link></Row>
         <Row><Link onClick={() => subRoute === 'resources' ? setSubRoute('/') : setSubRoute('resources')}>Resources</Link></Row>
-        <ExpandableRow show={subRoute === 'resources'}>
+        <ExpandableRow show={subRoute === 'resources'} height={196}>
           <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources1</ExpandableLink></Row>
           <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources2</ExpandableLink></Row>
           <Row><ExpandableLink onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources3</ExpandableLink></Row>
@@ -89,8 +88,7 @@ const ExpandableRow = styled.div`
   }
   transition: all 0.3s ease-in-out;
   ${props => props.show && css`
-    height: 192px;
-
+    height: ${props => props.height}px;
   `}
   overflow: hidden;
   background-color: ${theme.color.black};
@@ -118,7 +116,6 @@ const redirect =  async({ setToggled, history, url, setSubRoute }) => {
   await sleep(200)
   setSubRoute('/')
   history.push(url)
-
 }
 
 const toggledOff = async ({ setToggled, setSubRoute }) => {

@@ -1,20 +1,39 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
+import { useHistory } from 'react-router-dom'
 import Drawer from './Drawer'
 import { MenuImg, LogoImg } from '../../images'
 import theme from '../../theme'
+import { useHover } from '../../hooks'
 
 const Component = ({ toggled, setToggled }) => {
   const [subRoute, setSubRoute] = useState('/')
+  const [downloadsRef, isDownloadsHovered] = useHover()
+  const [resourcesRef, isResourcesHovered] = useHover()
+  const history = useHistory()
   return (
     <Root>
       <Drawer toggled={toggled} setToggled={setToggled} subRoute={subRoute} setSubRoute={setSubRoute}/>
       <Menu onClick={e => toggledOnOff({ toggled, setToggled, setSubRoute})}/>
-      <Link>Home</Link>
-      <Link>Downloads</Link>
+      <Link onClick={() => redirect({ history, setToggled, url: '/', setSubRoute})}>Home</Link>
+      <DropdownRoot ref={downloadsRef}>
+        <Link onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Downloads</Link>
+        <Dropdown show={isDownloadsHovered}>
+          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#wallets', setSubRoute})}>Wallets</Link>
+          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#miners', setSubRoute})}>Miners</Link>
+          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#binaries', setSubRoute})}>Binaries</Link>
+        </Dropdown>
+      </DropdownRoot>
       <Logo />
-      <Link>Community</Link>
-      <Link>Resources</Link>
+      <Link onClick={() => redirect({ history, setToggled, url: '/community', setSubRoute})}>Community</Link>
+      <DropdownRoot ref={resourcesRef}>
+        <Link onClick={() => redirect({ history, setToggled, url: '/resources', setSubRoute})}>Resources</Link>
+        <Dropdown show={isResourcesHovered}>
+          <Link>Resource1</Link>
+          <Link>Resource2</Link>
+          <Link>Resource3</Link>
+        </Dropdown>
+      </DropdownRoot>
     </Root>
   )
 }
@@ -113,6 +132,31 @@ const Link = styled.button`
   font-family: 'Robot', 'Helvetica Neue';
 `
 
+const DropdownRoot = styled.div`
+  position: relative;
+`
+
+const Dropdown = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  outline: none;
+  height: 0;
+  width: 125px;
+  &:active {
+    transform: translateY(2px);
+  }
+  transition: all 0.3s ease-in-out;
+  ${props => props.show && css`
+    height: 144px;
+
+  `}
+  overflow: hidden;
+  background-color: ${theme.color.black};
+  position: absolute;
+`
+
+
 const toggledOnOff = async ({ toggled, setToggled, setSubRoute }) => {
   if (toggled) {
     setToggled(false)
@@ -126,6 +170,14 @@ const toggledOnOff = async ({ toggled, setToggled, setSubRoute }) => {
 const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
+
+const redirect =  async({ setToggled, history, url, setSubRoute }) => {
+  setToggled(false)
+  await sleep(200)
+  setSubRoute('/')
+  history.push(url)
+}
+
 
 
 export default Component
