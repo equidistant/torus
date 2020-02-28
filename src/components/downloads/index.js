@@ -54,23 +54,24 @@ const Root = styled.div`
 
 const FirstScreen = styled.div`
   width: 100%;
-  height: min-content;
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
 `
 
 const Divider = styled.div`
   padding: ${theme.spacing(1)};
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid ${theme.color.orange}37;
   width: 60%;
   align-self: center;
 `
 
 const SecondScreen = styled(FirstScreen)`
-
+  height: 100vh;
 `
 
 const ThirdScreen = styled(FirstScreen)`
+  height: 100vh;
   background-color: white;
 `
 
