@@ -14,7 +14,7 @@ const Component = () => {
         <ScrollDown />
       </FirstScreen>
       <SecondScreen>
-        <H2>About</H2>
+        <H1>About</H1>
         <Text>
           The Torus blockchain is an experimental open-source, hybrid Proof-of-Work (PoW) and Proof-of-Stake (PoS) blockchain fueled by the native Torus (TRS) cryptocurrency.
         </Text>
@@ -52,7 +52,7 @@ const FirstScreen = styled.div`
 
 const SecondScreen = styled.div`
   width: 100%;
-  height: min-content;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,6 +70,7 @@ const H1 = styled.p`
     font-size: 48px;
     letter-spacing: 5px;
   }
+  font-weight: 700;
 `
 
 const H2 = styled.p`
@@ -81,7 +82,6 @@ const H2 = styled.p`
     letter-spacing: 4px;
   }
   font-weight: 700;
-  margin-top: ${theme.spacing(1)};
 `
 
 const H3 = styled.p`
@@ -100,7 +100,7 @@ const Text = styled.p`
   letter-spacing: 0px;
   width: 70%;
   padding: ${theme.spacing(1)};
-  margin-top: ${theme.spacing(1)};
+  margin-top: ${theme.spacing(3)};
   text-align: justify;
 `
 
