@@ -111,7 +111,6 @@ const H3 = styled.p`
 `
 
 const Text = styled.p`
-
   font-size: 16px;
   letter-spacing: 0px;
   width: 70%;

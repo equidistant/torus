@@ -6,7 +6,7 @@ import { MenuImg, LogoImg } from '../../images'
 import theme from '../../theme'
 import { useHover } from '../../hooks'
 
-const Component = ({ toggled, setToggled }) => {
+const Component = ({ toggled, setToggled, refs: { walletsRef, minersRef } }) => {
   const [subRoute, setSubRoute] = useState('/')
   const [downloadsRef, isDownloadsHovered] = useHover()
   const [resourcesRef, isResourcesHovered] = useHover()
@@ -19,8 +19,8 @@ const Component = ({ toggled, setToggled }) => {
       <DropdownRoot ref={downloadsRef}>
         <Link onClick={() => redirect({ history, setToggled, url: '/downloads', setSubRoute})}>Downloads</Link>
         <Dropdown show={isDownloadsHovered}>
-          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#wallets', setSubRoute})}>Wallets</Link>
-          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#miners', setSubRoute})}>Miners</Link>
+          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#wallets', setSubRoute, ref: walletsRef })}>Wallets</Link>
+          <Link onClick={() => redirect({ history, setToggled, url: '/downloads#miners', setSubRoute, ref: minersRef})}>Miners</Link>
           <Link onClick={() => redirect({ history, setToggled, url: '/downloads#binaries', setSubRoute})}>Binaries</Link>
         </Dropdown>
       </DropdownRoot>
@@ -173,11 +173,15 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-const redirect =  async({ setToggled, history, url, setSubRoute }) => {
+const redirect =  async({ setToggled, history, url, setSubRoute, ref }) => {
   setToggled(false)
   await sleep(200)
   setSubRoute('/')
   history.push(url)
+  if (ref) {
+    ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
 }
 
 

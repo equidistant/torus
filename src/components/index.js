@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Route, useHistory } from 'react-router-dom'
 import Navigation from './navigation'
 import Home from './home'
@@ -9,12 +9,14 @@ import { GlobalStyle } from '../style'
 export const App = () => {
   const [toggled, setToggled] = useState(false)
   const history = useHistory()
+  const walletsRef = useRef(null)
+  const minersRef = useRef(null)
   return (
     <>
       <GlobalStyle toggled={toggled}/>
-      <Navigation toggled={toggled} setToggled={setToggled}/>
+      <Navigation toggled={toggled} setToggled={setToggled} refs={{walletsRef, minersRef}}/>
       <Route exact path='/' component={Home} />
-      <Route exact path='/downloads' component={Downloads} />
+      <Route exact path='/downloads' component={() => <Downloads refs={{walletsRef, minersRef}}/>}/>
       <Footer />
     </>
   )

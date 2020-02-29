@@ -4,10 +4,10 @@ import Navigation from '../navigation'
 import { LogoImg } from '../../images'
 import theme from '../../theme'
 
-const Component = () => {
+const Component = ({ refs: { walletsRef, minersRef } }) => {
   return (
     <Root>
-      <FirstScreen>
+      <FirstScreen ref={walletsRef}>
         <FirstScreenRoot>
           <Column>
             <H2>Wallets</H2>
@@ -18,7 +18,7 @@ const Component = () => {
         </FirstScreenRoot>
       </FirstScreen>
       <Divider />
-      <SecondScreen>
+      <SecondScreen ref={minersRef}>
         <FirstScreenRoot>
           <Column>
             <H2>Mining</H2>
